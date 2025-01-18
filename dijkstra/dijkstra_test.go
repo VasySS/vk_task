@@ -109,3 +109,28 @@ func TestRun_Complex(t *testing.T) {
 		t.Errorf("Expected path %v, got %v", expectedPath, path)
 	}
 }
+
+func TestRun_NoPath(t *testing.T) {
+	input := [][]int{
+		{1, 1, 1, 1, 1, 1},
+		{1, 0, 0, 0, 0, 1},
+		{1, 0, 0, 1, 0, 1},
+		{1, 0, 1, 0, 0, 1},
+		{1, 1, 1, 1, 0, 1},
+	}
+	start := Point{X: 0, Y: 0}
+	end := Point{X: 2, Y: 3}
+
+	expectedDistance := -1
+	expectedPath := []Point{}
+
+	distance, path := Run(input, start, end)
+
+	if distance != expectedDistance {
+		t.Errorf("Expected distance %d, got %d", expectedDistance, distance)
+	}
+
+	if !pathsEqual(path, expectedPath) {
+		t.Errorf("Expected path %v, got %v", expectedPath, path)
+	}
+}
