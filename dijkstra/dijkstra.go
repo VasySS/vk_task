@@ -44,8 +44,8 @@ func (h *dHeap) Pop() any {
 
 func Run(input [][]int, st, end Point) (int, []Point) {
 	n, m := len(input), len(input[0])
-	distances := make(map[Point]int)
-	prev := make(map[Point]*Point)
+	distances := make(map[Point]int, n*m)
+	prev := make(map[Point]*Point, n*m)
 
 	for i := range n {
 		for j := range m {
